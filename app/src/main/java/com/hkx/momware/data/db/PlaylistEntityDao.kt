@@ -27,6 +27,9 @@ interface PlaylistEntityDao {
     fun getPlaylistItemByVideoId(videoId: String): Flow<PlaylistEntity>
 
     @Query("SELECT * from playlist ORDER BY title ASC")
-    fun getAllPlaylistItems(): Flow<List<PlaylistEntity>>
+    fun getAllPlaylistItems(): List<PlaylistEntity>
+
+    @Query("SELECT * from playlist ORDER BY title ASC")
+    fun getAllPlaylistItemsStream(): Flow<List<PlaylistEntity>>
 
 }

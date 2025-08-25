@@ -20,10 +20,9 @@ private const val TAG = "UserPreferencesRepo"
 class UserPreferencesRepository(
     private val dataStore: DataStore<Preferences>
 ) {
-    companion object {
+    private companion object {
         val PATH_TO_FILE = stringPreferencesKey("path_to_file")
     }
-
 
     val pathToFile: Flow<String?> = dataStore.data
         .catch {

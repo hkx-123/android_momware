@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 
 
 /**
- * Repository that provides insert, update, delete, and retrieve of [PlaylistEntity] from a given data source.
+ * Repository that provides insert, update, delete, and retrieve of [PlaylistEntity] from the database.
  */
 class DatabaseRepository(
     private val playlistEntityDao: PlaylistEntityDao
@@ -28,13 +28,13 @@ class DatabaseRepository(
     suspend fun deletePlaylistItem(playlistEntity: PlaylistEntity) = playlistEntityDao.delete(playlistEntity)
 
     /**
-     * Retrieve a playlist entity that matches with the [videoId].
-     */
-    fun getPlaylistItemByVideoIdStream(videoId: String): Flow<PlaylistEntity?> = playlistEntityDao.getPlaylistItemByVideoId(videoId)
-
-    /**
      * Retrieve all playlist entities
      */
-    fun getAllPlaylistItemsStream(): Flow<List<PlaylistEntity>> = playlistEntityDao.getAllPlaylistItems()
+    fun getAllPlaylistItems(): List<PlaylistEntity> = playlistEntityDao.getAllPlaylistItems()
+
+    /**
+     * Retrieve all playlist entities as Flow
+     */
+    fun getAllPlaylistItemsStream(): Flow<List<PlaylistEntity>> = playlistEntityDao.getAllPlaylistItemsStream()
 
 }

@@ -21,7 +21,7 @@ abstract class PlaylistDatabase : RoomDatabase() {
 
         fun getDatabase(context: Context): PlaylistDatabase {
             return Instance ?: synchronized(this) {
-                Room.databaseBuilder(context, PlaylistDatabase::class.java, "item_database")
+                Room.databaseBuilder(context, PlaylistDatabase::class.java, "playlist_database")
                     /**
                      * Setting this option in your app's database builder means that Room
                      * permanently deletes all data from the tables in your database when it
